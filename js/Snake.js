@@ -10,11 +10,10 @@ class Snake{
         for(let i=0;i<3;i++){
             elements.push(new Element(120-i*40,120));
         }
-        // elements[2].last=true;
         return elements;
     }
 
-    // parametr fields-pola planszy, zbiór obiektów Field
+    // fields-array of board field objects
     renderHTMLsnake(fields)
     {
         for(let [idx,element] of this.body.entries()){
