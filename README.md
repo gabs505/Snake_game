@@ -1,1 +1,4 @@
-# Snake_game
+# This game was made using:
+*HTML*
+*CSS*
+*JS*
