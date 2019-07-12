@@ -14,12 +14,29 @@ class Snake{
     }
 
     // fields-array of board field objects
-    renderHTMLsnake(fields)
+    renderHTMLsnake(fields,direction)
     {
         for(let [idx,element] of this.body.entries()){
-            
             let el=element.createHTMLelement(fields);
+            if(idx===0&&direction=="right"){
+                el.style.borderRadius="0px 20px 20px 0px";
+
+            }
+            else if(idx===0&&direction=="down"){
+                el.style.borderRadius="0px 0px 20px 20px";
+
+            }
+            else if(idx===0&&direction=="left"){
+                el.style.borderRadius="20px 0px 0px 20px";
+
+            }
+            else if(idx===0&&direction=="up"){
+                el.style.borderRadius="20px 20px 0px 0px";
+
+            }
             
+
+        
         }
     }
 }

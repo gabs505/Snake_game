@@ -22,7 +22,7 @@ class Game{
     initGame(gameSpeed){
         this.ready=true;
         this.board.renderHTMLboard();
-        this.snake.renderHTMLsnake(this.board.fields);
+        this.snake.renderHTMLsnake(this.board.fields,this.direction);
         this.gameSpeed=gameSpeed;
     }
 
@@ -156,8 +156,8 @@ handleKeyPressed(e){
                     let first=that.snake.body[0];
                     that.board.fields[last.posX/40][last.posY/40].busy=false;
                     
-                    
-                    
+                    let move=true;
+
                         switch(that.direction){
                             
                             case 'right':
@@ -168,6 +168,7 @@ handleKeyPressed(e){
                                 }
                                 else{
                                     that.gameOver();
+                                    move=false;
                                 }
                             break;
                             case 'left':
@@ -177,6 +178,7 @@ handleKeyPressed(e){
                                 }
                                 else{
                                     that.gameOver();
+                                    move=false;
                                 }
                                 
                             break;
@@ -187,6 +189,7 @@ handleKeyPressed(e){
                                 }
                                 else{
                                     that.gameOver();
+                                    move=false;
                                 }
                                 
                             break;
@@ -197,35 +200,39 @@ handleKeyPressed(e){
                                 }
                                 else{
                                     that.gameOver();
+                                    move=false;
                                 }
                                 
                             break;
                         }
                         
-                        that.board.fields[last.posX/40][last.posY/40].busy=true;
+                        if(move){
+                            that.board.fields[last.posX/40][last.posY/40].busy=true;
                         
-                        that.snake.body.unshift(last);
-                        let head=that.snake.body[0];
-                        
-                
-                        document.getElementById("board-upper").innerHTML="";
-    
-                        that.snake.renderHTMLsnake(that.board.fields);
-                        that.snakeEatsFruit(that.snake.body,that.fruit);
-                        
-                        
-                        
+                            that.snake.body.unshift(last);
+                            let head=that.snake.body[0];
                         
                 
-                        for(let [i,el] of that.snake.body.entries()){
-                            if(i!=0){
-                                if(el.posX==head.posX&&el.posY==head.posY){
-                                    that.gameOver();
-                                    
+                            document.getElementById("board-upper").innerHTML="";
+        
+                            that.snake.renderHTMLsnake(that.board.fields,that.direction);
+                            that.snakeEatsFruit(that.snake.body,that.fruit);
+                            
+                            
+                            
+                            
+                    
+                            for(let [i,el] of that.snake.body.entries()){
+                                if(i!=0){
+                                    if(el.posX==head.posX&&el.posY==head.posY){
+                                        that.gameOver();
+                                        
+                                    }
                                 }
-                            }
                             
                         }
+                        }
+                        
                     }
             },that.gameSpeed)
             
