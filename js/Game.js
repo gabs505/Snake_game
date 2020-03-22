@@ -112,16 +112,6 @@ handleKeyPressed(e){
     if(this.ready){
         var that=this;
     
-        // if(e.key==="Control"){
-        //     for (let i = 1; i < 30; i++){
-        //     let snakeBody = that.snake.body;
-        //     let x=snakeBody[snakeBody.length-i].posX-40;
-        //     let y=snakeBody[snakeBody.length-i].posY;
-        //     let element=new Element(x,y);
-        //     snakeBody.push(element);
-        //     element.createHTMLelement(that.board.fields);
-        //     }
-        // }
     
         if(e.key==="ArrowRight"){
             if (that.direction != 'left'){
