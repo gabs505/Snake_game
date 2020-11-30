@@ -1,4 +1,4 @@
-# This game was made using:
+## This game was made using:
 *HTML*
 *CSS*
 *JS*
